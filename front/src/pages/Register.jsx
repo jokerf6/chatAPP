@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "../assets/loading.gif";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import { registerRoute } from "../utils/APIRoutes";
 
 export default function Register() {
-  const navigate = useNavigate();
   const toastOptions = {
     position: "bottom-right",
     autoClose: 8000,
@@ -22,12 +21,6 @@ export default function Register() {
     password: "",
     confirmPassword: "",
   });
-
-  useEffect(() => {
-    if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
-      navigate("/");
-    }
-  }, []);
 
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
@@ -65,6 +58,13 @@ export default function Register() {
     event.preventDefault();
     if (handleValidation()) {
       const { email, username, password } = values;
+      console.log(process.env.URL);
+     const res =  axios.post(`http://127.0.0.1:5000/register`, {
+        username,
+        email,
+        password,
+      })
+      console.log(res);
     }
   };
 
