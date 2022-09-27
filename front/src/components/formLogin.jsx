@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from "react";
-import Logo from "../assets/loading.gif"
+import Logo from "../assets/logo.svg"
 import LOGINBUTTON from "../components/buttonLogin"
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 
 export default function FORMLOGIN()  {
+  const navigate = useNavigate();
   const toastOptions = {
     position: "bottom-right",
     autoClose: 8000,
@@ -26,20 +28,35 @@ export default function FORMLOGIN()  {
         axios.post(`http://127.0.0.1:5000/login`, {
           email,
           password,
-        }).then(data=>hand(data.data.code)).catch(err=>hand(err.response.data.code))
+        }).then(data=>hand(data.data)).catch(err=>hand(err.response.data))
 
         // console.log('res',res);
     };
-   function hand(data){
+
+    useEffect(()=>{
+     if( localStorage.getItem('access_token')){
+    console.log(localStorage.getItem("access_token"));
+       navigate("/");
+    }
+    }, [])
+
+
+    function hand(data){
     console.log(data);
-    if(data !== "Success"){
+    if(data.code !== "Success"){
     toast.error(
       "Password incorrect",
       toastOptions
     );
     }
     else{
-      window.location.href = "http://127.0.0.1:3000"
+       localStorage.setItem(
+        "access_token",
+        JSON.stringify(data.data.id)
+      );
+      console.log(data.data)
+     // window.location.href = "http://127.0.0.1:3000"
+     navigate("/")
     }
     }
   return (
