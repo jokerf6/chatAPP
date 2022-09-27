@@ -59,7 +59,7 @@ export default function Register() {
     if (handleValidation()) {
       const { email, username, password } = values;
       console.log(process.env.URL);
-     const res =  axios.post(`http://127.0.0.1:5000/register`, {
+     const res = await axios.post(`http://127.0.0.1:5000/register`, {
         username,
         email,
         password,

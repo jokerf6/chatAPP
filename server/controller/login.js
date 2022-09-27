@@ -9,13 +9,23 @@ async function login(req, res, next) {
     },
   });
   if (!userExist) {
-    return Responses.badRequest(res, "user not found", null);
+    return Responses.badRequest(res, "user not found", "user not found");
   }
-  const valid = bcrypt.compare(password, userExist.password);
+  console.log(userExist.password, password);
+  const valid = await bcrypt.compare(password, userExist.password);
+  console.log(valid);
   if (!valid) {
-    return Responses.badRequest(res, "Pawword is incorrect", null);
+    return Responses.badRequest(
+      res,
+      "Pawword is incorrect",
+      "Pawword is incorrect"
+    );
   }
-  return Responses.success(res, "logged in Successfully", userExist);
+  return Responses.success(
+    res,
+    "logged in Successfully",
+    "logged in Successfully"
+  );
 }
 
 export default login;
