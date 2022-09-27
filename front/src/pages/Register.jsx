@@ -74,7 +74,7 @@ export default function Register() {
         <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
             <img src={Logo} alt="logo" />
-            <h1>snappy</h1>
+            <h1>fahd</h1>
           </div>
           <input
             type="text"
@@ -156,7 +156,7 @@ const FormContainer = styled.div`
     }
   }
   button {
-    background-color: #4e0eff;
+  background-color: #aea2d1;
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -165,6 +165,8 @@ const FormContainer = styled.div`
     border-radius: 0.4rem;
     font-size: 1rem;
     text-transform: uppercase;
+    transition: 0.8s;
+
     &:hover {
       background-color: #4e0eff;
     }
