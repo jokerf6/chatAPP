@@ -1,8 +1,14 @@
 import React from 'react'
 import Logo from "../assets/logo.svg"
+import axios from 'axios'
 export default function CONTACTS(){
 
+ const users = axios.get(`http://127.0.0.1:5000/users`).then(data=>data.data).catch(err=>err);
+ console.log(users);
+
     return (
+
+ 
 <>
 
     <div className='allContacts'>

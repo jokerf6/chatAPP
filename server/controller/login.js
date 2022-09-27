@@ -21,11 +21,7 @@ async function login(req, res, next) {
       "Pawword is incorrect"
     );
   }
-  return Responses.success(
-    res,
-    "logged in Successfully",
-    "logged in Successfully"
-  );
+  return Responses.success(res, "logged in Successfully", userExist);
 }
 
 export default login;
