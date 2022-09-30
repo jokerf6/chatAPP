@@ -1,5 +1,6 @@
 import React from 'react'
-import Logo from "../assets/logo.svg"
+import Logo from "../assets/robot.gif"
+import "../assets/welcome.css"
 export default function CHAT() {
     const name = "fahd";
   return (

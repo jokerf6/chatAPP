@@ -30,7 +30,6 @@ export default function FORMLOGIN()  {
           password,
         }).then(data=>hand(data.data)).catch(err=>hand(err.response.data))
 
-        // console.log('res',res);
     };
 
     useEffect(()=>{

@@ -1,19 +1,12 @@
-import React from 'react'
-import CHAT from "../components/welcome"
-import "../assets/welcome.css"
-import CONTACTS from '../components/contacts'
+import React from "react";
+import "../assets/welcome.css";
+import CONTS from "../components/conts";
 const Chat = () => {
   return (
-<>
-<div className='all'>
-  <div className="container">
-  <CONTACTS />
-
-      < CHAT/>
-      </div>
-    </div>
+    <>
+      <CONTS />
     </>
-  )
-}
+  );
+};
 
-export default Chat
+export default Chat;
