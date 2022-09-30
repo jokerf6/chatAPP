@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Logo from "../assets/logo.svg"
+import Logo from "../assets/logo.svg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import { registerRoute } from "../utils/APIRoutes";
@@ -59,11 +59,11 @@ export default function Register() {
     if (handleValidation()) {
       const { email, username, password } = values;
       console.log(process.env.URL);
-     const res = await axios.post(`http://127.0.0.1:5000/register`, {
+      const res = await axios.post(`http://127.0.0.1:5000/register`, {
         username,
         email,
         password,
-      })
+      });
       console.log(res);
     }
   };
@@ -71,7 +71,11 @@ export default function Register() {
   return (
     <>
       <FormContainer>
-        <form action="" onSubmit={(event) => handleSubmit(event)}>
+        <form
+          className="bb"
+          action=""
+          onSubmit={(event) => handleSubmit(event)}
+        >
           <div className="brand">
             <img src={Logo} alt="logo" />
             <h1>fahd</h1>
@@ -153,22 +157,6 @@ const FormContainer = styled.div`
     &:focus {
       border: 0.1rem solid #997af0;
       outline: none;
-    }
-  }
-  button {
-  background-color: #aea2d1;
-    color: white;
-    padding: 1rem 2rem;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 0.4rem;
-    font-size: 1rem;
-    text-transform: uppercase;
-    transition: 0.8s;
-
-    &:hover {
-      background-color: #4e0eff;
     }
   }
   span {

@@ -98,3 +98,69 @@ h3 {
   display: flex;
   flex-direction: row;
 }
+.welcome2 {
+  width: 100%;
+  position: relative;
+}
+.welcome2 img {
+  height: 3rem;
+}
+.profile {
+  padding: 10px 20px;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  background-color: #b3b3b361;
+  width: 100%;
+}
+.send {
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  align-items: center;
+  border: none;
+  outline: none;
+  gap: 1%;
+}
+.send textarea {
+  outline: none;
+  border: none;
+  width: 90%;
+  padding: 10px 10px;
+  overflow: auto;
+}
+.send textarea {
+  padding-left: 40px;
+  margin-top: 10px;
+  padding-top: 9px;
+}
+
+.icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10%;
+  background-color: #3b2d5f;
+  padding: 8px 0;
+  transition: 0.5s;
+}
+.icon button {
+  width: 100%;
+  height: 100%;
+  padding: 15px 15px;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+}
+.icon:hover {
+  background-color: #080420;
+  cursor: pointer;
+}

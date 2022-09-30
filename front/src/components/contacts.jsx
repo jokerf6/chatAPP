@@ -48,7 +48,11 @@ class contacts extends React.Component {
               </div>
             </div>
 
-            {this.state.name === "" ? <CHAT /> : <CHAT2 />}
+            {this.state.use === null ? (
+              <CHAT />
+            ) : (
+              <CHAT2 name={this.state.use} image={this.state.image} />
+            )}
           </div>
         </div>
       </>

@@ -42,7 +42,7 @@ input:focus {
   border: 0.1rem solid #997af0;
   outline: none;
 }
-button {
+.bm button {
   background-color: #aea2d1;
   color: white;
   padding: 1rem 2rem;
@@ -54,7 +54,7 @@ button {
   text-transform: uppercase;
   transition: 0.8s;
 }
-button:hover {
+.bm button:hover {
   background-color: #4e0eff;
 }
 span {

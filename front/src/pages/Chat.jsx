@@ -1,10 +1,10 @@
 import React from "react";
 import "../assets/welcome.css";
-import CONTS from "../components/conts";
+import CONTACTS from "../components/contacts";
 const Chat = () => {
   return (
     <>
-      <CONTS />
+      <CONTACTS />
     </>
   );
 };
