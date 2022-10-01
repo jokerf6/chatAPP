@@ -117,14 +117,17 @@ h3 {
   width: 100%;
 }
 .send {
-  background-color: white;
+  background-color: #b3b3b361;
   position: absolute;
-  bottom: 0;
-  width: 100%;
+  bottom: 2%;
+  left: 10%;
+  width: 85%;
   align-items: center;
   border: none;
   outline: none;
   gap: 1%;
+  border-radius: 21px;
+  height: fit-content;
 }
 .send textarea {
   outline: none;
@@ -132,19 +135,23 @@ h3 {
   width: 90%;
   padding: 10px 10px;
   overflow: auto;
+  background-color: transparent;
+  color: white;
+  height: fit-content;
 }
 .send textarea {
   padding-left: 40px;
   margin-top: 10px;
   padding-top: 9px;
 }
-
+textarea::placeholder {
+  color: white;
+}
 .icon {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 7%;
+  left: 0;
   width: 10%;
-  background-color: #3b2d5f;
   padding: 8px 0;
   transition: 0.5s;
 }
@@ -161,6 +168,42 @@ h3 {
   font-size: 16px;
 }
 .icon:hover {
-  background-color: #080420;
   cursor: pointer;
+}
+.emo {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: gold;
+  background-color: black;
+  overflow: hidden;
+  border-radius: 30px;
+  font-size: 25px;
+  border: none;
+}
+.allEmo {
+  position: absolute;
+  bottom: 35px;
+  width: 40%;
+}
+.sendI {
+  position: absolute;
+  bottom: 5%;
+  right: 8%;
+}
+.sendI img {
+  width: 25px;
+  height: 25px;
+}
+.sendI:hover {
+  cursor: pointer;
+}
+.active {
+  background-color: #080420;
+}
+textarea {
+  resize: none;
+}
+.EmojiPickerReact--epr-hover-bg-color {
+  background-color: aliceblue;
 }
