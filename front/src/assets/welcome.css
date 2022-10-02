@@ -207,3 +207,25 @@ textarea {
 .EmojiPickerReact--epr-hover-bg-color {
   background-color: aliceblue;
 }
+.chat {
+  width: 100%;
+  height: 78%;
+}
+.mess {
+  background-color: #4f04ff21;
+  margin: 20px;
+  padding: 20px;
+  width: fit-content;
+  border-radius: 21px;
+  position: relative;
+  display: flex;
+  right: 0;
+  margin-left: auto;
+}
+.mesr {
+  background-color: #9900ff20;
+  margin: 20px;
+  padding: 20px;
+  width: fit-content;
+  border-radius: 21px;
+}

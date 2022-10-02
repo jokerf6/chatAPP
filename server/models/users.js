@@ -1,7 +1,7 @@
 import dataType from "sequelize";
 import { UUIDV4 } from "sequelize";
 function init(connection) {
-  connection.define("user", {
+  connection.define("users", {
     id: {
       type: dataType.UUID,
       primaryKey: true,

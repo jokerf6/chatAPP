@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../assets/welcome.css";
 import send from "../assets/send.png";
-// import Picker from "emoji-picker-react";
-// import { IoMdSend } from "react-icons/io";
 import EmojiPicker from "emoji-picker-react";
 import { BsEmojiSmileFill } from "react-icons/bs";
-import { Theme } from "emoji-picker-react";
-import { EmojiStyle } from "emoji-picker-react";
-
+import axios from "axios";
+import io from "socket.io-client";
 class CHAT2 extends React.Component {
   constructor() {
     super();
     this.state = {
       showEmojiPicker: false,
       msg: "",
+      id: localStorage
+        .getItem("access_token")
+        .slice(2, localStorage.getItem("access_token").length - 1),
     };
     this.handleEmoji = this.handleEmoji.bind(this);
     this.addEmoji = this.addEmoji.bind(this);
@@ -37,10 +37,17 @@ class CHAT2 extends React.Component {
       msg: e.target.value,
     });
   }
-  sendMessage() {
+  async sendMessage() {
     console.log(this.state.msg);
+    console.log(this.props.id);
+    await axios.post(`http://127.0.0.1:5000/user/message`, {
+      message: this.state.msg,
+      recieverId: this.props.id,
+      senderId: localStorage
+        .getItem("access_token")
+        .slice(2, localStorage.getItem("access_token").length - 1),
+    });
   }
-
   render() {
     return (
       <div className="welcome welcome2">
@@ -48,7 +55,15 @@ class CHAT2 extends React.Component {
           {<img src={this.props.image} alt="logo" />}
           {<h3>{this.props.name}</h3>}
         </div>
-        <div className="chat"></div>
+        <div className="chat">
+          {this.props.messages.map((message) => (
+            <div
+              className={this.state.id === message.senderId ? "mess" : "mesr"}
+            >
+              <p>{message.message}</p>
+            </div>
+          ))}
+        </div>
         <div className="send">
           <textarea
             onChange={this.changeText}

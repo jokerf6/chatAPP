@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import axios from "axios";
 import Logo from "../assets/logo.svg";
 import "../assets/welcome.css";
 import CHAT2 from "./chat2";
 import CHAT from "./welcome";
 import Loader from "../assets/loader.gif";
+import { getAllMessages } from "./getAllMessages";
 class contacts extends React.Component {
   constructor() {
     super();
@@ -15,6 +16,8 @@ class contacts extends React.Component {
       loading: false,
       isActive: -1,
       msg: "",
+      id: "",
+      messages: [],
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -24,6 +27,7 @@ class contacts extends React.Component {
         users: res.data.data,
         loading: true,
       });
+      console.log(res.data.data);
     });
   }
   handleClick(e) {
@@ -31,6 +35,7 @@ class contacts extends React.Component {
     this.setState({
       use: data.lastChild.innerText,
       image: data.firstChild.src,
+      id: data.id,
     });
     let x = document.getElementsByClassName("user");
     for (let i = 0; i < x.length; i++) {
@@ -40,6 +45,17 @@ class contacts extends React.Component {
     let d = e.target;
     if (d.className !== "user") d = e.target.parentNode;
     d.className = "user active";
+    axios
+      .get(
+        `http://127.0.0.1:5000/user/messages/${localStorage
+          .getItem("access_token")
+          .slice(2, localStorage.getItem("access_token").length - 1)}/${d.id}`
+      )
+      .then((res) => {
+        this.setState({
+          messages: res.data.data,
+        });
+      });
   }
   render() {
     return (
@@ -58,7 +74,11 @@ class contacts extends React.Component {
                 </div>
                 <div className="contacts">
                   {this.state.users.map((user) => (
-                    <div className="user" onClick={this.handleClick}>
+                    <div
+                      className="user"
+                      id={user.id}
+                      onClick={this.handleClick}
+                    >
                       <img src={user.image} alt="phot" />
                       <h3>{user.username}</h3>
                     </div>
@@ -69,7 +89,12 @@ class contacts extends React.Component {
               {this.state.use === null ? (
                 <CHAT />
               ) : (
-                <CHAT2 name={this.state.use} image={this.state.image} />
+                <CHAT2
+                  name={this.state.use}
+                  image={this.state.image}
+                  id={this.state.id}
+                  messages={this.state.messages}
+                />
               )}
             </div>
           </div>
